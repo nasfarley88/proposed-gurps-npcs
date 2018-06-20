@@ -1,22 +1,36 @@
-\documentclass{memoir}
+\documentclass[a4paper,onepage]{memoir}
 
-% I know, I know, I should use memoirs proper page things
-\usepackage[cm]{fullpage}
+\setulmarginsandblock{4cm}{*}{1}
+\setlrmarginsandblock{2cm}{*}{1}
+\checkandfixthelayout
 
 \usepackage{tikz}
+\usetikzlibrary{shapes}
 \usepackage{gurps}
-\usepackage{times}
 \usepackage{xparse}
+\usepackage{multicol}
+
+% Typographical nicities
+\usepackage{microtype}
+\usepackage{lettrine}
 
 \usepackage{gurps-npccard}
 
 \setsecnumdepth{chapter}
 
+\setsechook{\clearpage}
+\setsecheadstyle{\itshape\Huge\centering}
+
 \begin{document}
+
+\title{Portfolio of proposed \gurps NPCs}
+\author{Nathanael Farley\thanks{\SJGamesOnlinePolicyGameAid{Nathanael Farley}}}
+\maketitle
+\tableofcontents
 
 \section{Debbie Dyers}
 \label{sec:debbie-dyers}
- 
+
 \begin{character*}[Debbie Dyers]
   \characterpicture{default.png}
   \ST{11} \DX{13} \IQ{12} \HT{12}
@@ -29,44 +43,62 @@
   \advantage{Extra Attack}[25]
   \advantage{Signature Gear (Infrared sensor body suit)}
 
-  \disadvantage{Vow (TODO figure out)}[-5]
+  \disadvantage{Vow (never return home)}[-5]
 
   \skill{Guns (cordite pistol)}{16}
   \skill{Karate}{18}
 \end{character*}
 
-\printcharactercard{Debbie Dyers}
-\begin{tikzpicture}[x=1in, y=1in]
-  \draw (0,0) rectangle (0.5, -0.325);
-  \draw (0.25,-0.325) -- (0.25,-0.1625);
 
-  \draw (0,0) rectangle (0.5,2) node[pos=0.0,xshift=0.25in,anchor=north] {\small Front} node[pos=1.0,xshift=-0.25in,anchor=north,rotate=180] {\small Back};
-  \draw (0,1) -- (0.5,1);
+\hfill
+\begin{minipage}[c]{1in}
+  \centering
+  % hex
+  \begin{tikzpicture}
+    \node[regular polygon,regular polygon sides=6,draw,inner sep=0.31in] at (0,0) {};
+  \end{tikzpicture}\\[2em]
+  % cardboard hero
+  \begin{tikzpicture}[x=1in, y=1in]
+    \draw (0,0) rectangle (0.5, -0.325); \draw (0.25,-0.325) -- (0.25,-0.1625);
 
-  \draw (0,2) rectangle (0.5, 2.325);
-  \draw (0.25,2.325) -- (0.25,2.1625);
-\end{tikzpicture}
+    \draw (0,0) rectangle (0.5,2); \draw (0,1) -- (0.5,1);
 
-Debbie Dyers is an independent bounty hunter who is legendary in the right
-circles. She comes from a long line of hunters, the first of which was recorded
-on earth who was allgegedly a `monster hunter' according to family folklore
+    \draw (0,2) rectangle (0.5, 2.325); \draw (0.25,2.325) -- (0.25,2.1625);
+  \end{tikzpicture}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{5.1in}
+  \printcharactercard{Debbie Dyers}
+\end{minipage}
+\hfill
 
-An imposing figure at 6'2" with fiery red hair which extends to her shoulders.
-She is usually sporting a trenchcoat which hides her extensive weaponry and
-equipment.
+\subsection{Meta stats}
+\subsubsection{Character inspirations} \emph{the} prodigal son
 
-Markedly against bio-enhancements, she has a special vest which gives her
-360\textsuperscript{o} heat vision allowing her to aim at two (heat based)
-targets at once.
+\subsection{Description}
+\begin{multicols}{3}
+  \lettrine{D}{ebbie} Dyers is an independent bounty hunter who is legendary in the right
+  circles. She comes from a long line of hunters, the first of which was
+  recorded on earth who was allgegedly a `monster hunter' according to family
+  folklore
 
-% Little known sister to Leslie ``Trunchball'' Dyers
-% (p.~\pageref{sec:lesl-trunchb-dyers}), Debbie is viewed as the `golden child' by her
-% parents despite Trunchball's success in building \thecompany up from nothing.
-% Debbie works for \emph{Dyers Independent}, a private bounty hunter company with
-% one employee: Debbie.
+  An imposing figure at 6'2" with fiery red hair which extends to her shoulders.
+  She is usually sporting a trenchcoat which hides her extensive weaponry and
+  equipment.
 
-\GCPrintCharacter[Debbie Dyers]
+  Markedly against bio-enhancements, she has a special vest which gives her
+  360\textsuperscript{o} heat vision allowing her to aim at two (heat based)
+  targets at once.
 
+  % Little known sister to Leslie ``Trunchball'' Dyers
+  % (p.~\pageref{sec:lesl-trunchb-dyers}), Debbie is viewed as the `golden
+  % child' by her parents despite Trunchball's success in building \thecompany
+  % up from nothing. Debbie works for \emph{Dyers Independent}, a private bounty
+  % hunter company with one employee: Debbie.
+
+  % \GCPrintCharacter[Debbie Dyers]
+
+\end{multicols}
 \end{document}
 
 %%% Local Variables:
