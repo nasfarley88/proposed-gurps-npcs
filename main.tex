@@ -13,8 +13,16 @@
 % Typographical nicities
 \usepackage{microtype}
 \usepackage{lettrine}
+\usepackage{ragged2e}
 
 \usepackage{gurps-npccard}
+
+\usepackage{hyperref}
+
+\setlength{\RaggedRightParindent}{\parindent}
+\RaggedRight
+
+
 
 \setsecnumdepth{chapter}
 
@@ -26,11 +34,41 @@
 \setsubsubsecheadstyle{\scshape\normalsize\raggedright}
 \setaftersubsubsecskip{-1em}
 
+
+\NewDocumentCommand{\from}{mm}{\mbox{#1 from \emph{#2}}}
+\NewDocumentCommand{\cardandstuff}{m}{
+\hfill
+\begin{minipage}[c]{1in}
+  \centering
+  % hex
+  \begin{tikzpicture}
+    \node[regular polygon,regular polygon sides=6,draw,inner sep=0.31in] at (0,0) {};
+  \end{tikzpicture}\\[2em]
+  % cardboard hero
+  \begin{tikzpicture}[x=1in, y=1in]
+    \draw (0,0) rectangle (0.5, -0.325); \draw (0.25,-0.325) -- (0.25,-0.1625);
+
+    \draw (0,0) rectangle (0.5,2); \draw (0,1) -- (0.5,1);
+
+    \draw (0,2) rectangle (0.5, 2.325); \draw (0.25,2.325) -- (0.25,2.1625);
+  \end{tikzpicture}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{5.1in}
+  \printcharactercard{#1}
+\end{minipage}
+\hfill
+}
+
+\NewDocumentEnvironment{npcdescription}{}{
+\subsection{Description}\begin{multicols}{3}}{\raisebox{0.1ex}{\tikz\node[draw,fill=black,inner
+  sep=0.7ex] {};}\end{multicols}}
 \begin{document}
 
 \title{Portfolio of proposed \gurps NPCs}
 \author{Nathanael Farley\thanks{\SJGamesOnlinePolicyGameAid{Nathanael Farley}}}
 \maketitle
+
 \tableofcontents
 
 \section{Debbie Dyers}
@@ -78,14 +116,14 @@
 \hfill
 
 \subsection{Meta stats}
-\subsubsection{Character inspirations:} the prodigal son
+\subsubsection{Character inspirations:} \from{The prodigal son}{New Testament};
+\from{Trinity}{The Matrix}.
 
-\subsection{Description}
-\begin{multicols}{3}
-  \lettrine{D}{ebbie} Dyers is an independent bounty hunter who is legendary in the right
-  circles. She comes from a long line of hunters, the first of which was
-  recorded on earth who was allgegedly a `monster hunter' according to family
-  folklore
+\begin{npcdescription}
+  \lettrine{D}{ebbie} Dyers is an independent bounty hunter who is legendary in
+  the right circles. She comes from a long line of hunters, the first of which
+  was recorded on earth who was allgegedly a `monster hunter' according to
+  family folklore
 
   An imposing figure at 6'2" with fiery red hair which extends to her shoulders.
   She is usually sporting a trenchcoat which hides her extensive weaponry and
@@ -94,16 +132,110 @@
   Markedly against bio-enhancements, she has a special vest which gives her
   360\textsuperscript{o} heat vision allowing her to aim at two (heat based)
   targets at once.
+\end{npcdescription}
 
-  % Little known sister to Leslie ``Trunchball'' Dyers
-  % (p.~\pageref{sec:lesl-trunchb-dyers}), Debbie is viewed as the `golden
-  % child' by her parents despite Trunchball's success in building \thecompany
-  % up from nothing. Debbie works for \emph{Dyers Independent}, a private bounty
-  % hunter company with one employee: Debbie.
 
-  % \GCPrintCharacter[Debbie Dyers]
+\section{Leslie ``Trunchball'' Dyers}
+\label{sec:lesl-trunchb-dyers}
 
-\end{multicols}
+\begin{character*}[Leslie Dyers]
+  \characterpicture{default.png}
+  \ST{15} \DX{11} \IQ{11} \HT{12}
+
+  \skill{Brawling}{16}
+\end{character*}
+
+\cardandstuff{Leslie Dyers}
+
+\subsection{Meta stats}
+\subsubsection{Character inspirations:} \from{Trunchball}{Matilda};
+\from{Kingpin}{Spiderman}; \from{Tahani}{The Good Place}.
+
+\begin{npcdescription}
+  \lettrine{L}{eslie} ``Trunchball'' Dyers is a strong woman, \emph{literally!}
+  The kingpin of her own empire, Trunchball has built her bounty hunter company
+  from the ground up into one of the premier bounty hunter the local area. A
+  formidable force herself once, she now sits behind a desk dealing with the day
+  to day of the business. She seems to take personal pleasure in chewing out
+  bounty hunter employees who mess up.
+
+  However, she is haunted by her inability to get approval from her parents. Her
+  sister, the golden child, always seems to get preferential treatment no matter
+  what they do despite the fact that she has disavaowed her parents. To this
+  day, Trunchball is still highly motivated to gain the approval she percieves
+  she has never recieved.
+
+  When called into combat, Trunchball dons elbow length power gloves, amplifying
+  her strength to well beyond human limits.
+\end{npcdescription}
+
+
+\section{Crystalline}
+\label{sec:Crystalline}
+
+\begin{character*}[Crystalline]
+  \characterpicture{default.png}
+  \ST{9} \DX{11} \IQ{13} \HT{10}
+
+  \disadvantage{Short lifespan (crystalline disease)}
+  \quirk{Socially awkward}
+
+  \skill{Computer Programming}{18}
+  \skill{Computer Hacking}{18}
+  \skill{Computer Operations}{19}
+\end{character*}
+
+\cardandstuff{Crystalline}
+
+\subsection{Meta stats}
+\subsubsection{Character inspirations:} \from{Abby Sciuto}{NCIS}.
+\subsubsection{Soundtrack:} \href{https://www.youtube.com/watch?v=s4iLX7eWwmE}{Crystalline -- The Midnight}
+
+
+\begin{npcdescription}
+  \lettrine{I}{nfected} with a fatal disease that turns her skin to crystal on
+  contact with water during a raid on a government testing facility, Crystalline
+  is the archetypal hacker in the basement. Due to her condition, she rarely
+  socialises but devotes all her time to hacking into whoever pays her the most.
+
+  She will occasionaly risk outside contact but only for those she \emph{truly}
+  trusts.
+\end{npcdescription}
+
+
+
+\NewDocumentCommand{\shadow}{}{\$hadow}
+\section{\$hadow}
+
+\begin{character*}[shadow]
+  \characterpicture{default.png}
+  \ST{10} \DX{12} \IQ{13} \HT{10}
+
+  \skill{Computer Hacking}{14}
+\end{character*}
+
+\cardandstuff{shadow}
+
+\subsection{Meta Stats}
+
+\begin{npcdescription}
+  \lettrine{N}{ecro-psi} computer hacker, \shadow\ is the man when you want
+  information, but you don't want to know where it comes from.
+
+  Abilities include:
+  \begin{description}
+  \item[Shadow shift] Shift into pure shadow, allowing access to areas usually
+    forbidden
+  \item[Garotte] Literally, a garotte
+  \item[Necro-mind read] Signature move: read the mind of a recently deceased
+    sysadmin (who may or may not have come in contact with a Garotte) and get
+    the admin password direct from their memory
+  \end{description}
+
+  Suffice to say, you probably don't want to meet \shadow\ in a dark alley. Or
+  at all. He takes payment by wire transfer and secure email.
+\end{npcdescription}
+
 \end{document}
 
 %%% Local Variables:
