@@ -211,8 +211,20 @@
 \begin{character*}[shadow]
   \characterpicture{default.png}
   \ST{10} \DX{12} \IQ{13} \HT{10}
+  \Will{16}
 
-  \skill{Computer Hacking}{14}
+  \skill{Computer Hacking}[IQ/Hard]{13}
+  \skill{Assasin!}[DX/Wildcard]{16} %No point in separating out all the assasiny
+                                %things he does
+
+  % Necro-psi
+  \advantage{Corpse Sense 1}[26]
+  \skill{Corpse Sense}[Per/Hard]{24}
+  %TODO replace with technique when GURPS LaTeX package supports it
+  \skill{Flashes of Insight}{24}
+
+  \advantage{Silhouette 4}[72]
+  \skill{Silhouette}[Will/Hard]{16}
 \end{character*}
 
 \cardandstuff{shadow}
@@ -237,17 +249,23 @@
   Abilities include:
   \begin{description}
   \item[Silhouette] Shift into pure shadow, allowing access to areas usually
-    forbidden
+    forbidden. See \#3/99 for more details.
   \item[Garotte] Literally, a garotte
-  \item[Necro-mind read] Signature move: read the mind of a recently deceased
-    sysadmin (who may or may not have come in contact with a Garotte) and get
-    the admin password direct from their memory
+  \item[Flashes of Insight] Signature move: read the mind of a recently deceased
+    sysadmin (who may or may not have come in contact with a garotte) and get
+    the admin password direct from their memory. Will prefer the snapshot
+    version of this ability with the penalties listed in \#3/99.
   \end{description}
 
   Suffice to say, you probably don't want to meet \shadow\ in a dark alley. Or
   at all. He takes payment by wire transfer and secure email.
 \end{npcdescription}
 
+\begin{multicols}{2}
+  \SetCharacterKey{shadow}
+  \GCPrintCharacter
+  \ResetCharacterKey
+\end{multicols}
 \end{document}
 
 %%% Local Variables:
